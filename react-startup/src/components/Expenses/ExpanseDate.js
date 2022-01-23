@@ -1,3 +1,4 @@
+import React from "react";
 import "./ExpanseDate.css";
 
 function ExpanseDate(props) {
@@ -7,9 +8,9 @@ function ExpanseDate(props) {
     return ( <
         div className = "expansedate" >
         <
-        div className = "expansedate__month" > { month } < /div> <
-        div className = "expansedate__year" > { year } < /div> <
-        div className = "expansedate__day" > { day } < /div> <
+        div className = "expansedate__month" > { month } < /div>{" "} <
+        div className = "expansedate__year" > { year } < /div>{" "} <
+        div className = "expansedate__day" > { day } < /div>{" "} <
         /div>
     );
 }

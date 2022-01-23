@@ -1,4 +1,5 @@
-import Expanse from "./components/Expanse";
+import Expanse from "./components/Expenses/Expanse";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
     const expanses = [{
@@ -29,7 +30,8 @@ function App() {
     return ( <
         div >
         <
-        Expanse items = { expanses } > < /Expanse> <
+        NewExpense > < /NewExpense> <
+        Expanse items = { expanses } > < /Expanse>{" "} <
         /div>
     );
 }
