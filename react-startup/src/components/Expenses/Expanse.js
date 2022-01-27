@@ -1,29 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpanseItem from "./ExpanseItem";
 import "./Expanse.css";
 import Card from "../UI/Card";
+import ExpensesFilter from "./ExpenseFilter";
 
 function Expanse(props) {
+    const [filteredYear, setFilteredYear] = useState("2020");
+    const filterChangeHandler = (selectedYear) => {
+        setFilteredYear(selectedYear);
+    };
+
     return ( <
+        div >
+        <
         Card className = "expanse" >
         <
-        ExpanseItem title = { props.items[0].title }
-        amount = { props.items[0].price }
-        date = { props.items[0].date } >
-        < /ExpanseItem>{" "} <
-        ExpanseItem title = { props.items[1].title }
-        amount = { props.items[1].price }
-        date = { props.items[1].date } >
-        < /ExpanseItem>{" "} <
-        ExpanseItem title = { props.items[2].title }
-        amount = { props.items[2].price }
-        date = { props.items[2].date } >
-        < /ExpanseItem>{" "} <
-        ExpanseItem title = { props.items[3].title }
-        amount = { props.items[3].price }
-        date = { props.items[3].date } >
-        < /ExpanseItem>{" "} <
-        /Card>
+        ExpensesFilter selected = { filteredYear }
+        onChangeFilter = { filterChangeHandler }
+        /> {
+            props.items.map(
+                (expense) => ( <
+                    ExpanseItem title = { expense.title }
+                    amount = { expense.price }
+                    date = { expense.date } >
+                    < /ExpanseItem>
+                )
+                //   console.log(expense.date)
+            )
+        } <
+        /Card> <
+        /div>
     );
 }
 
