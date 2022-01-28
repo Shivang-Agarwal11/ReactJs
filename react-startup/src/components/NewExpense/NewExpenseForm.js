@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import "./NewExpenseForm.css";
 const NewExpenseForm = (props) => {
     const [enteredtitle, setEnteredTitle] = useState();
-    const [enetredAmount, setEnteredAmount] = useState();
-    const [enetredDate, setEnteredDate] = useState();
+    const [enteredAmount, setEnteredAmount] = useState();
+    const [enteredDate, setEnteredDate] = useState();
+
     const TitleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
     };
@@ -18,8 +19,8 @@ const NewExpenseForm = (props) => {
         event.preventDefault();
         const expenseData = {
             title: enteredtitle,
-            amount: enetredAmount,
-            date: new Date(enetredDate),
+            amount: +enteredAmount,
+            date: new Date(enteredDate),
         };
         props.onSaveExpenseData(expenseData);
         setEnteredTitle("");
@@ -44,14 +45,14 @@ const NewExpenseForm = (props) => {
         lable > Amount < /lable>{" "} <
         input type = "number"
         min = "10"
-        value = { enetredAmount }
+        value = { enteredAmount }
         onChange = { AmountChangeHandler }
         />{" "} <
         /div>{" "} <
         div className = "new-expenses__control" >
         <
         lable > Date < /lable>{" "} <
-        input value = { enetredDate }
+        input value = { enteredDate }
         type = "date"
         min = "2019-01-01"
         max = "2022-12-31"
@@ -61,10 +62,13 @@ const NewExpenseForm = (props) => {
         /div>{" "} <
         div className = "new-expenses__actions" >
         <
+        button type = "submit"
+        onClick = { props.onCancel } >
+        Cancel { " " } <
+        /button>{" "} <
         button type = "submit" > Add Expense < /button>{" "} <
         /div>{" "} <
         /form>
     );
 };
-
 export default NewExpenseForm;
